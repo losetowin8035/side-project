@@ -1,0 +1,13 @@
+<ol class="page-navigator">
+    {% if pageInfo.hasPrevPage %}
+    <li class="prev"><a href="/{{prefix}}/{{pageInfo.prevPage}}">{{prevText}}</a></li>
+    {% endif %}
+
+    {% for navIndex in pageInfo.navPageNums %}
+    <li {% if pageInfo.pageNum == navIndex %} class="current" {% endif %}><a href="/{{prefix}}/{{navIndex}}">{{navIndex}}</a></li>
+    {% endfor %}
+
+    {% if pageInfo.hasNextPage %}
+    <li class="next"><a href="/{{prefix}}/{{pageInfo.nextPage}}">{{nextText}}</a></li>
+    {% endif %}
+</ol>

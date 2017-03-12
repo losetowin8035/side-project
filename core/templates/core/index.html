@@ -1,0 +1,35 @@
+{% include 'core/header.html' %}
+<div class="main-content index-page clearfix">
+    <div class="post-lists">
+        <div class="post-lists-body">
+	    {% for article in articles %}
+            <div class="post-list-item">
+                <div class="post-list-item-container">
+		    <a href="{% url 'article' article.id %}" class="item-thumb  bg-deepgrey"
+					       style="background-image:url({{article.thumb_img}});">
+			<dir class="item-desc">{{article.title}}</dir>
+                    </a>
+                    <div class="item-slant reverse-slant &lt; bg-deepgrey"></div>
+                    <div class="item-slant"></div>
+                    <div class="item-label">
+			<div class="item-title"><a href="{% url 'article' article.id %}">{{article.title}}</a>
+                        </div>
+                        <div class="item-meta clearfix">
+                            <div class="item-meta-ico bg-ico-code"
+                                 style="background: url(/templates/themes/default/static/img/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+				<a href="{% url 'branch' article.branch_id %}">{{article.branch_name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="lists-navigator clearfix">
+        {% include 'core/page_navigation.html' with pageInfo=articles prevText='←' nextText='→' prefix='page' %}
+    </div>
+</div>
+
+{% include 'core/footer.html' %}
